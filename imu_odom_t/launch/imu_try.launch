@@ -1,0 +1,16 @@
+<launch>
+
+  <arg name="x_forward" default="false"/>
+
+  <!-- Publish static transforms (base link to sensor links) -->
+  <include file="$(find imu_odom_t)/launch/static_tf_publisher.launch">
+    <arg name="x_forward_base" value="$(arg x_forward)"/>
+  </include>
+
+  <!-- Launch the robot_localization node -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_node" output="screen">
+    <rosparam file="$(find imu_odom_t)/param/imu_22.yaml" command="load" /> 
+    <remap from="/odometry/filtered" to="/odom" />
+  </node>
+
+</launch>

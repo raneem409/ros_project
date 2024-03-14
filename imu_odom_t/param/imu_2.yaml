@@ -1,0 +1,25 @@
+ekf_localization_node:
+  frequency: 30
+  two_d_mode: false
+  publish_tf: true
+  publish_acceleration: false
+  publish_odom_tf: true
+
+  sensor_timeout: 0.1
+
+  imu0: /imu/data_raw
+
+  process_noise_covariance: [0.05, 0, 0, 0, 0, 0,   
+                             0, 0.05, 0, 0, 0, 0,
+                             0, 0, 0.06, 0, 0, 0,
+                             0, 0, 0, 0.03, 0, 0,
+                             0, 0, 0, 0, 0.03, 0,
+                             0, 0, 0, 0, 0, 0.06]
+
+  initial_estimate_covariance: [1e-9, 0, 0, 0, 0, 0,    
+                                0, 1e-9, 0, 0, 0, 0,
+                                0, 0, 1e-9, 0, 0, 0,
+                                0, 0, 0, 1e-9, 0, 0,
+                                0, 0, 0, 0, 1e-9, 0,
+                                0, 0, 0, 0, 0, 1e-9]
+

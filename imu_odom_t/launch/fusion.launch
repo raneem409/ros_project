@@ -1,0 +1,13 @@
+<launch>
+  <node pkg="robot_localization" type="ekf_localization_node" name="map_to_odom"
+        clear_params="true" output="screen">
+    <rosparam command="load" file="$(find imu_odom_t)/params/map_to_odom.yaml"/>
+    <!--  Output topic remapping -->
+    <remap from="odometry/filtered" to="/odom"/> 
+  </node>
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="odom_to_base"
+        clear_params="true" output="screen">
+    <rosparam command="load" file="$(find imu_odom_t)/params/odom_to_base.yaml"/> 
+  </node>
+</launch>
